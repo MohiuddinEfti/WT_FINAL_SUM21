@@ -1,23 +1,24 @@
 <?php
-session_start();
 	include 'controllers/cat_control.php';
+	$id = $_GET["id"];
+	$c = getCat($id);
 	
 ?>
 
 <html>
 	<body>
-	<h1>Welcome <?php echo $_SESSION["loggeduser"];?></h1>
 	<h1><?php echo $db_err;?></h1>
 		<form action="" method="POST">
 			<table align="center">
 				<tr>
 					<td>
-						<input type="text" name="cn" value="<?php echo $cname;?>" placeholder="Category name"><span><?php echo $err_cname;?></span>
+					<input type="hidden" value="<?php echo $id?>" name="id">
+						<input type="text" name="name" value="<?php echo $c["cname"];?>" placeholder="Category name">
 					</td>
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="submit" name="addcategory" value="Add Category">
+						<input type="submit" name="delete" value="Delete Category">
 					</td>
 				</tr>
 			</table>
