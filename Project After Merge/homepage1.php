@@ -9,7 +9,7 @@
 
 
 
-	<link rel="stylesheet" href="styles/mystyle.css">
+	<link rel="stylesheet" href="style/mystyle.css">
 	<style>
 	body {
   		background-image: url('style/bus.jpg');
@@ -35,7 +35,7 @@
 			<tr> 
 			<td><a href="logIn.php" class="btn-link">Log Out</a></td>
 			<td><a href="rateservice.php" class="btn-link">Service Rating</a></td>
-			<td><a href="feedback.php" class="btn-link">Feedback</a></td>
+			<td><a href="feedback1.php" class="btn-link">Feedback</a></td>
 			<td><a href="allBus.php" class="btn-link">View Buses</a></td>
 
 			</h1>

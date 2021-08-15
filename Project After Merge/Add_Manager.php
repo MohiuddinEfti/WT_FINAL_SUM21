@@ -7,8 +7,10 @@
 	<title>ADD MANAGER</title>
 	
 <link rel="stylesheet" href="style/myStyle.css">
-<script src="Controller/jsValidation.js"></script> 
+
+<script src="js/jsValidation.js"></script> 
 	
+<script src="js/addManager.js"></script> 	
 	
 	</head>
 	<body>
@@ -22,7 +24,7 @@
 		<fieldset>
 			<form action="" onsubmit="return validate()" method="post">
 			 <table><table align="center" >
-			<h2><?phpecho $rs;?></h2> 
+			<h2><?php echo  $err_db;?></h2> 
 				<tr>
 					<td><b>Name:</td>
 					<td><input type="text" id="name" name="name" placeholder="Name"value="<?php echo $name;?>"></td>
@@ -30,7 +32,7 @@
 				</tr>
 				<tr>
 					<td><b>Username:</td>
-					<td><input type="text" id="username" name="username"placeholder="Username" value="<?php echo $uname;?>"></td>
+					<td><input type="text"   onfocusout="checkUsername(this)" id="username" name="username"placeholder="Username" value="<?php echo $uname;?>"></td>
 					<td><span id="err_uname"><?php echo $err_uname;?></span></td>
 				</tr><tr>
 				
@@ -40,7 +42,7 @@
 				</tr>
 				<tr>
 					<td><b>Password:</td>
-					<td><input type="text" id="pass" name="pass"placeholder="Password" value="<?php echo $pass;?>"></td>
+					<td><input type="text" id="pass" name="pass" placeholder="Password" value="<?php echo $pass;?>"></td>
 					<td><span id="err_pass"><?php echo $err_pass;?></span></td>
 				</tr>
 				<tr>
@@ -71,6 +73,7 @@
 			
 		</fieldset>		
 		<a href="AdminDashboard.php" class="btn-link">GO BACK TO ADMIN DASHBOARD</a>
+		<a href="All_Manager.php"class="btn-link">GO TO ALL MANAGER</a>
 	</body>
 	
 </html>

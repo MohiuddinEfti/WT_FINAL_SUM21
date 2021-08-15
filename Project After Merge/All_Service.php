@@ -3,7 +3,7 @@ include 'controllers/ServiceController.php';
 $service=getAllService();
 ?>
 
-<html><html><br><br><a href="AdminDashboard.php">GO BACK TO ADMIN DASHBOARD</a>	
+<html><html><br><br><a href="AdminDashboard.php" class="btn-link">GO BACK TO ADMIN DASHBOARD</a>	
 
 
 	<link rel="stylesheet" href="style/myStyle.css">

@@ -39,15 +39,22 @@ if(isset($_POST["ForgetPassword"]))
 		if(!empty($_POST["email"])&&!empty($_POST["password"]))
 		{ 
 			$rs=update($_POST["email"],$_POST["password"]);
-			
-			
-			if($rs==true)
+			$c=verify($_POST["email"]);
+			if($c==null)
 			{
-				header("Location: logIn.php");
+				$err_email="Invalid Email";
+			}
+			else
+			{
+				if($rs==true)
+				{
+					header("Location: logIn.php");
+				}
+				
+				
+				$db_err = $rs;
 			}
 			
-			
-			$db_err = $rs;
 			
 			
 		}
@@ -60,7 +67,12 @@ if(isset($_POST["ForgetPassword"]))
 	return execute($query);
 	
 	}
-	
+	function verify($s2)
+	{
+		$query = "SELECT * FROM user WHERE Email = '$s2' ";
+		
+		 return get($query);
+	}
 	
 
 ?>

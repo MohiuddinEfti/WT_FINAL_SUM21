@@ -1,6 +1,7 @@
 <?php
+
+       session_start();
       require_once 'models/control.php';
-        session_start();
 
     
       $name="";
@@ -95,6 +96,13 @@
 			insertPayment($name,$code,$number,$day,$month,$year,$card);
 
        $_SESSION["name1"]= $name;
+       $_SESSION["code1"]= $code;
+       $_SESSION["number1"]= $number;
+       $_SESSION["day1"]= $day;
+       $_SESSION["month1"]= $month;
+       $_SESSION["year1"]= $year;
+       $_SESSION["card1"]= $card;
+
 
 
         header("Location: paymentreceipt.php");

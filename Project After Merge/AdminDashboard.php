@@ -7,7 +7,7 @@
 	
 	<link rel="stylesheet" href="style/myStyle.css">
 	
-	<h3 align="Right"><a target="" href="logIn.php"> Log Out </a></h3>
+	
 	<br><br><br>
 	<h3 id="p">MANAGER:</h3>
 	<span><a  target="_blank" href="VerifyManager.php" class="btn-link">VERIFY REGISTERED MANAGER</a></span>

@@ -2,8 +2,8 @@
 
 session_start();
 include 'models/control.php';
-date_default_timezone_set('Asia/Dhaka');
-$datetoday = date("Y-m-d");
+//date_default_timezone_set('Asia/Dhaka');
+//$datetoday = date("Y-m-d");
     $err_db = "";
 	$name="";
 	$err_name="";
@@ -24,6 +24,8 @@ $datetoday = date("Y-m-d");
 	$err=false;
 	$err_message="";
 	$message="";
+	$pass="";
+	$err_pass="";
 $hasError=false;
 	
 	if(isset($_POST["add_manager"])){
@@ -93,16 +95,33 @@ $hasError=false;
 		else{
 			$salary=$_POST["salary"];
 		}
+		if(empty($_POST["pass"])){
+			$err_pass="Password Required. ";
+			$err=true;
+		}
+		else{
+			$pass=$_POST["pass"];
+		}
 		
 		if(!$err){
 			$rs = insertManager($name,$uname,$email,$pass,$address,$DOB,$salary,$gender);
 			
 			if($rs === true){
-			//	var_dump(); 
-			//echo "Manager Added.";
+				
+				
+				
+			$cookie_name = "addmanager";
+			
+			setcookie($cookie_name,$uname,time()+180);
+			
+			
+			//rest of it in all manager.php		
+			// echo "added  ".$_COOKIE[$cookie_name];
+			
 			header("Location: All_Manager.php");
 			}
-			echo $rs;
+			//echo $rs;
+			$err_db = $rs;
 	}
 	}
 	
@@ -161,7 +180,7 @@ $hasError=false;
 					
 					
 			$_SESSION["loggeduser"] = $_POST["username"];
-			 echo "MESSAGE SENT SUCCESSFULLY TO :  ".$_SESSION["loggeduser"]; //session used here in sending message.
+			 echo "MESSAGE SENT SUCCESSFULLY TO :  ".$_SESSION["loggeduser"];                           //session used here in sending message.
 			}
 			
 			}
@@ -179,6 +198,7 @@ $hasError=false;
 		if($rs == true){
 			
 			//$_SESSION["updatemanager"] = $_POST["username"];
+			
 			
 	       
 			header("Location: All_Manager.php");
@@ -203,8 +223,8 @@ $hasError=false;
 	
 	
 	function insertManager($name,$uname,$email,$pass,$address,$DOB,$salary,$gender){
-		Global $datetoday;
-		$query  = "insert into user values (NULL,'$name','$uname','$email','$pass',NULL,'$address',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$datetoday','Manager','$DOB','$salary','$gender')";
+		//Global $datetoday;
+		$query  = "insert into user values (NULL,'$name','$uname','$email','$pass',NULL,'$address',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8/15/2021','Manager','$DOB','$salary','$gender')";
 		return execute($query);	
 	}
 	function insertManagerMessage($uname,$message){
@@ -212,6 +232,13 @@ $hasError=false;
 		return execute($query);	
 	}
 	
+	function getAllManagerMessage(){
+		$query = "select Froms,Message from message_manager WHERE Toreceive='Admin'";
+		$rs = get($query);
+		return $rs;
+	}
+	
+
 	function authenticateManager($uname){
 		$query ="select * from user where Username='$uname' AND Type='Manager'";
 		$rs = get($query);
@@ -227,18 +254,37 @@ $hasError=false;
 		return $rs;
 	}
 	function getManager($id){
-		$query= "select Name,Email,Address,Salary from manager where ID=$id";
+		$query= "select Name,Email,Address,Salary from user where ID=$id";
 		$rs = get($query);
 	return $rs[0];
 	}
 	function updateManager($name,$email,$address,$salary,$id){
-		$query= "update manager set Name='$name',Email='$email',Address='$address',Salary=$salary where ID=$id";
+		$query= "update user set Name='$name',Email='$email',Address='$address',Salary=$salary where ID=$id";
 		return execute($query);
 	}
 	function deleteManager($id)
 	{
-		$query= "DELETE FROM manager WHERE ID='$id'";
+		$query= "DELETE FROM user WHERE ID='$id'";
 		return execute($query);
 	}
+	
+	
+	
+	function checkUsername($uname){ //for ajax
+		$query = "select name from user where Username='$uname' AND Type='Manager'";
+		$rs = get($query);
+		if(count($rs) > 0){
+			return true;
+		}
+		else return false;
+	}
+	
+	
+	function search($key){
+		$query = "select id,name from user where Username like '%$key%' AND Type='Manager'";
+		$rs = get($query);
+		return $rs;
+	}
+	
 	
 ?>

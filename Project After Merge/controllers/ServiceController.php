@@ -26,7 +26,7 @@ include 'models/control.php';
 			 
 			 
 			 
-			// header("Location: All_Service.php");
+			 header("Location: All_Service.php");
 		}
 		$db_err = $rs;
 	}

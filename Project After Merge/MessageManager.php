@@ -9,42 +9,9 @@ $manager=getAllManager();
 	<title>Message MANAGER</title>
 	
 	
-	<script>
-	       var hasError=false;
-	        function get(id){
-				return document.getElementById(id);
-		                	}
-							
-							
-			function validate(){
-	
-			    refresh();
-				if(get("username").value == ""){
-					hasError = true;
-					get("err_uname").innerHTML = "*Username Req";
-				}
-				
-				if(get("message").value == ""){
-					hasError = true;
-					get("err_message").innerHTML = "*Message Req";
-				}
-				
-				return !hasError;
-			}
-			
-			
-			
-			function refresh(){
-				hasError=false;
-				get("err_name").innerHTML="";
-				get("err_message").innerHTML = "";
-				
+<script src="js/jsValidation.js"></script>
 
-
-			}
-	</script>
-	
-	<link rel="stylesheet" href="Style/myStyle.css">
+<link rel="stylesheet" href="Style/myStyle.css">
 	
 	
 	</head>
@@ -55,7 +22,7 @@ $manager=getAllManager();
 
 	<h1 id="p1">MESSAGE MANAGER</h1>
 	<fieldset>
-			<form action="" onsubmit="return validate()" method="post">
+			<form action="" onsubmit="return validate3()" method="post">
 			 <table><table align="left" >
  
 <tr><b>Manager Information</tr>	
@@ -94,8 +61,8 @@ echo "<tr>";
 				</tr>
 				
 			</form>	
-			
+			 
 		</fieldset>	
-	
+	<a href="ManagerReply.php"class="btn-link">VIEW MANAGER REPLIES</a>
 	</body>
 </html>

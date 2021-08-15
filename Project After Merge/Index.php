@@ -1,14 +1,24 @@
 <?php
 
 	include 'controllers/loged.php';
-
+	
 ?>
 <htmL>
-<link rel="stylesheet" href="style/login.css">
+<link rel="stylesheet" href="style/logins.css">
 	<body>
 	<script src="js\login.js"></script>
 	<div class="bg">
-	<p align="center"><?php echo $_SESSION["Created"]; ?></p>
+	<p align="center">
+	<?php  
+	if(!isset($_COOKIE[$account]))
+	{
+		echo " ";
+	}
+	else
+	{
+		echo $_COOKIE[$account];
+	} 
+	?></p>
 	<h1><p align="center">Log In</p></h1>
 		<form action="" onsubmit="return validate()" method="POST">
 		<table align="center" id="rcorners2">

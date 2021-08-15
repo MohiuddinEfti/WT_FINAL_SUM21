@@ -57,7 +57,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					<tr>
 		<td colspan="3" align="center">
 			<input type="submit" name="submit" value="Submit">
+			
 		</td>
+		<td> <a  style="text-decoration:none" href="homepage.php" target="_self" >Home &nbsp</a></td>
+
 	</tr>
 							
 </table>

@@ -35,13 +35,13 @@ After successful acceptance of your services you will be able to enjoy your serv
 your services are rejected,then unfortunately you will have to apply again or if your services are on pending status, then you will have to wait 
 for atleast 48hours.</p>
 
-<h3>Below are your results:</h3>
+<h3 align="left">Below are your results:</h3>
 	
-<tr><td>No.</td>
-<td>SERVICE 1</td>
-<td>SERVICE 2</td>
-<td>SERVICE 3</td>
-<td>REQUEST</td>
+<tr><td><b>NO.</td>
+<td><b>SERVICE 1</td>
+<td><b>SERVICE 2</td>
+<td><b>SERVICE 3</td>
+<td><b>REQUEST</td>
 
 </tr>
 

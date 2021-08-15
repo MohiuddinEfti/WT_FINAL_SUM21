@@ -36,6 +36,10 @@ var hasError=false;
 					hasError = true;
 					get("err_DOB").innerHTML = "*Date Of Birth Req";
 				}
+				if(get("pass").value == ""){
+					hasError = true;
+					get("err_pass").innerHTML = "*Password Req";
+				}
 				if(get("address").value == ""){
 					hasError = true;
 					get("err_address").innerHTML = "*Address Req";
@@ -56,7 +60,9 @@ var hasError=false;
 				get("err_gender").innerHTML = "";
 				get("err_salary").innerHTML = "";
 				get("err_DOB").innerHTML = "";
+				get("err_pass").innerHTML = "";
 				get("err_address").innerHTML = "";
+				
 				}
 				
 				function validate2(){
@@ -90,12 +96,12 @@ var hasError=false;
 			    refresh3();
 				if(get("username").value == ""){
 					hasError = true;
-					get("err_uname").innerHTML = "*Username Req";
+					get("err_uname").innerHTML = "Username Required.";
 				}
 				
 				if(get("message").value == ""){
 					hasError = true;
-					get("err_message").innerHTML = "*Message Req";
+					get("err_message").innerHTML = "PLEASE WRITE YOUR MESSAGE TO SEND";
 				}
 				
 				return !hasError;
@@ -105,6 +111,6 @@ var hasError=false;
 			
 			function refresh3(){
 				hasError=false;
-				get("err_name").innerHTML="";
+				get("err_uname").innerHTML="";
 				get("err_message").innerHTML = "";
 			}
