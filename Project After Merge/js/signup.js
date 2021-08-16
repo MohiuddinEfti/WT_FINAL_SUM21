@@ -5,23 +5,43 @@ var hasError=false;
 							
 							
 			function validate(){
-				
+				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 			    refresh();
 				if(get("name").value == ""){
 					hasError = true;
 					get("err_name").innerHTML = "*Name Required";
 				}
+				else if(!isNaN(get("name").value)){
+					hasError = true;
+					get("err_name").innerHTML = "*Only characters are allowed";
+				}
 				if(get("username").value == ""){
 					hasError = true;
 					get("err_uname").innerHTML = "*Username Required";
+				}
+				else if(!isNaN(get("name").value)){
+					hasError = true;
+					get("err_uname").innerHTML = "*Only characters are allowed";
 				}
 				if(get("email").value == ""){
 					hasError = true;
 					get("err_email").innerHTML = "*Email Required";
 				}
+				if(get("email").value.match(mailformat)){
+					hasError = false;
+				}
+				else
+				{
+					hasError = true;
+					get("err_email").innerHTML = "*Invalid email address";
+				}
 				if(get("password").value == ""){
 					hasError = true;
 					get("err_pass").innerHTML = "*Password Required";
+				}
+				else if(get("password").value.length <=5){
+					hasError = true;
+					get("err_pass").innerHTML = "*Password Must be greater or equal to 6 digit";
 				}
 				else if(get("password").value != get("cpassword").value){
 					hasError = true;
@@ -35,9 +55,21 @@ var hasError=false;
 					hasError = true;
 					get("err_phone").innerHTML = "*Phone Number Required";
 				}
+				else if(isNaN(get("phone").value)){
+					hasError = true;
+					get("err_phone").innerHTML = "*Only Digit Allowed";
+				}
+				else if(get("phone").value.length<11){
+					hasError = true;
+					get("err_phone").innerHTML = "*Minimum 11 digit allowed";
+				}
 				if(get("address").value == ""){
 					hasError = true;
 					get("err_address").innerHTML = "*Address Required";
+				}
+				else if(!isNaN(get("address").value)){
+					hasError = true;
+					get("err_address").innerHTML = "*Address Only characters are allowed";
 				}
 				if(get("DOB").value == ""){
 					hasError = true;

@@ -15,7 +15,10 @@ var hasError=false;
 					hasError = true;
 					get("err_OffPercen").innerHTML = "*Percentage Required";
 				}
-				
+				else if(isNaN(get("percentage").value)){
+					hasError = true;
+					get("err_OffPercen").innerHTML = "*Percentage Can Only Be Digit";
+				}
 				if(get("coupon").value == ""){
 					hasError = true;
 					get("err_CoCode").innerHTML = "*Coupon Required";
